@@ -3,10 +3,13 @@ const router = new express.Router();
 const {addToListMiddleware} = require('../middleware/addToListMiddleware')
 const {
   getAllListController,
-  addToListController
+  addToListController,
+  deleteFromListController
 } = require('../controllers/listController')
 
 router.get('/', getAllListController);
 router.post('/', addToListMiddleware, addToListController);
+router.delete('/', deleteFromListController);
+
 
 module.exports = router

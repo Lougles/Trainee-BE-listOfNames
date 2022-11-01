@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-
 const listModel = mongoose.Schema({
   name: {
     type: String,
-    require: true,
+    require: [true, "Please enter a vaid name."],
   },
   rating: {
     type: Number,

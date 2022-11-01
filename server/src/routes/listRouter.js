@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const {addToListMiddleware} = require('../middleware/addToListMiddleware')
+const {addToListMiddleware} = require('../middleware/listMiddleware')
 const {
   getAllListController,
   addToListController,
@@ -9,7 +9,7 @@ const {
 
 router.get('/', getAllListController);
 router.post('/', addToListMiddleware, addToListController);
-router.delete('/', deleteFromListController);
+router.delete('/:id', deleteFromListController);
 
 
 module.exports = router

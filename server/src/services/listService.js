@@ -20,8 +20,10 @@ const addToListService = async (body) => {
 
 const deleteFromListService = async (id) => {
   try {
-    const data = await List.findByIdAndDelete(id);
-    return {status: 200, message: data}
+    const data = await List.findByIdAndDelete(id, {returnDocument: 'before'});
+    if(!data) return {status: 400, message: {"message": "Not Found"}}
+    console.log(data);
+    return {status: 200, message: {"message": `Contact ${data.name} has beed deleted`,data}}
   } catch (e) {
     return {status: 400, message: e.message}
   }

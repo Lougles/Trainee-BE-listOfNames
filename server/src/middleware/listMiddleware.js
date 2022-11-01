@@ -7,5 +7,5 @@ const addToListMiddleware = (req, res, next) => {
 }
 
 module.exports = {
-  addToListMiddleware
+  addToListMiddleware,
 }

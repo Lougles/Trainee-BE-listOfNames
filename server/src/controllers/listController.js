@@ -1,7 +1,8 @@
 const {
   getAllListService,
   addToListService,
-  deleteFromListService
+  deleteFromListService,
+  updateAllFieldsService
 } = require('../services/listService')
 
 const getAllListController = async(req, res) => {
@@ -19,10 +20,14 @@ const deleteFromListController = async(req, res) => {
   res.status(status).json(message)
 }
 
-
+const updateAllFieldsController = async(req, res) => {
+  const {status, message} = await updateAllFieldsService(req.params.id, req.body);
+  res.status(status).json(message)
+}
 
 module.exports = {
   getAllListController,
   addToListController,
-  deleteFromListController
+  deleteFromListController,
+  updateAllFieldsController
 }

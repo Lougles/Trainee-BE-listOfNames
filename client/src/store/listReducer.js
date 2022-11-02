@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  lists: [{_id: 1, name: 'Vova'},{_id: 2, name: 'Petya'}],
+  lists: [],
 }
 
 export const listSlice = createSlice({

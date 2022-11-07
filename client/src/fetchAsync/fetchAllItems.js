@@ -3,13 +3,24 @@ import axios from 'axios'
 const URL = 'http://localhost:4321/list'
 
 export const fetchManyItems = () => {
-  return dispatch => {
+  return async (dispatch) => {
     try {
-      axios.get(URL)
+      await axios.get(URL)
       .then(res => dispatch(addManyItems(res.data)))
-    } catch (e) {
-      console.log(e.message);
+    } catch (err) {
+      throw new Error(err);
     }
+  }
+}
+
+export const getTodosAsync = () => async (dispatch) => {
+  try {
+    // console.log(data); 
+    const response = await axios.get(URL);
+    console.log(response);
+    dispatch(addManyItems(response.data));
+  } catch (err) {
+    throw new Error(err);
   }
 }
 

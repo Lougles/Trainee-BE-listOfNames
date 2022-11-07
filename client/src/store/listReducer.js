@@ -16,7 +16,10 @@ export const listSlice = createSlice({
     },
     addManyItems: (state, action) => { 
       return {lists: [...state.lists, ...action.payload]}
-    }
+    },
+    updateItem: (state, action) => {
+      return {lists: state.lists.map(i => i.id === action.payload ? Object.assign(i, action.payload) : i)}
+    },
   }
 })
 

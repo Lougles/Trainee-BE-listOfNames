@@ -12,7 +12,7 @@ const getAllListService = async () => {
 const addToListService = async (body) => {
   try {
     const data = await List.create({...body});
-    return {status: 200, message: data}
+    return {status: 201, message: data}
   } catch (e) {
     return {status: 400, message: e.message}
   }

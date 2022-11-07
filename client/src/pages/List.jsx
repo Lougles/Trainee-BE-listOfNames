@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {addTodoAsync, deleteTodoAsync, fetchManyItems} from '../fetchAsync/fetchAllItems'
 import { useEffect } from 'react';
-import {ListGroup, Button, Form, FormControl} from 'react-bootstrap';
+import {ListGroup, Button, Form, FormControl, Badge} from 'react-bootstrap';
 
 const List = () => {
+const [flag, setFlag] = useState(false);
 const {lists} = useSelector(state => state.lists)
 const dispatch = useDispatch();
 
@@ -14,6 +15,11 @@ useEffect(() => {
 
 const handleRemove = (payload) => {
   dispatch(deleteTodoAsync(payload))
+}
+
+const handleChange = (payload) => {
+  // dispatch()
+  setFlag(true);
 }
 
 const handleSubmit = (e) => {
@@ -28,14 +34,17 @@ const handleSubmit = (e) => {
   dispatch(addTodoAsync(user))
   form.reset();
 }
+
   return (
     <div>
       <ListGroup>
         { lists.length ?
         lists.map(item => 
-            <ListGroup.Item key={item._id}>{item.name}
-            <span style={{marginLeft: 20}}>{item.rating}</span>
-              <Button onClick={() => handleRemove(item._id)}>X</Button>
+            <ListGroup.Item key={item._id}>
+              <Badge bg="secondary" style={{marginLeft: 20, marginRight: 20}}>{item.name}</Badge>
+              <Badge bg="secondary" style={{marginLeft: 20, marginRight: 20}}>{item.rating}</Badge>
+              <Button onClick={() => handleChange(item._id)}>Edit</Button>
+              <Button variant='danger' onClick={() => handleRemove(item._id)}>X</Button>
             </ListGroup.Item>
           )
         :

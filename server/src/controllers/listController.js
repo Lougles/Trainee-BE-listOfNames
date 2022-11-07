@@ -6,7 +6,7 @@ const {
 } = require('../services/listService')
 
 const getAllListController = async(req, res) => {
-  const {status, message} = await getAllListService();
+  const {status, message} = await getAllListService(req.user.number);
   res.status(status).json(message)
 }
 

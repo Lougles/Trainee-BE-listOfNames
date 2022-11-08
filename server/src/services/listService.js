@@ -1,8 +1,8 @@
 const {List} = require('../models/listModel')
 
-const getAllListService = async (number) => {
+const getAllListService = async () => {
   try {
-    const data = await List.find().sort({rating: -1})
+    const data = await List.find().sort({rating: 'descending'})
     return {status: 200, message: data}
   } catch (e) {
     return {status: 400, message: e.message}

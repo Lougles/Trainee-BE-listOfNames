@@ -8,7 +8,6 @@ const List = () => {
 const [flag, setFlag] = useState(false);
 const {lists} = useSelector(state => state.lists)
 const dispatch = useDispatch();
-
 useEffect(() => {
   dispatch(fetchManyItems())
 }, [])

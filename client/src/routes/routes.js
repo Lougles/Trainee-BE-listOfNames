@@ -1,4 +1,4 @@
-import {HOME, LIST, AUTH} from '../utils/consts'
+import {HOME, LIST, REGISTRATION, LOGIN} from '../utils/consts'
 import Home from '../pages/Home'
 import List from '../pages/List'
 import Auth from '../pages/Auth'
@@ -13,7 +13,11 @@ export const publicRoutes = [
     Component: List
   },
   {
-    path: AUTH,
+    path: REGISTRATION,
+    Component: Auth
+  },
+  {
+    path: LOGIN,
     Component: Auth
   }
 ]
